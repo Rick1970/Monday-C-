@@ -66,6 +66,11 @@ public class Program
     Console.WriteLine("Enter maximum price: ");
     string stringMaxPrice = Console.ReadLine();
     int maxPrice = int.Parse(stringMaxPrice);
+    if (maxPrice < 39000)
+    {
+      Console.WriteLine("You are to poor!!");
+      Main();
+    }
 
     Console.WriteLine("Enter maximum miles: ");
     string stringMaxMiles = Console.ReadLine();
