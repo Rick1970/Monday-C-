@@ -6,6 +6,7 @@ class Car
   private string _makeModel;
   private int _price;
   private int _miles;
+  public string fuelEconomy;
 
   public void SetMakeModel(string newMakeModel)
   {
@@ -34,6 +35,13 @@ class Car
     return _miles;
   }
 
+  public Car(string vehicle, int cost, int mileage, string message)
+  {
+    SetMakeModel(vehicle);
+    SetPrice(cost);
+    SetMiles(mileage);
+    fuelEconomy = message;
+  }
 
   public bool WorthBuying(int maxPrice, int maxMiles)
   {
@@ -45,28 +53,13 @@ public class Program
 {
   public static void Main()
   {
-    Car porsche = new Car();
-    porsche.SetMakeModel("2014 Porsche 911");
-    porsche.SetPrice(114991);
-    porsche.SetMiles(7864);
-    Console.WriteLine(porsche.GetMakeModel());
-    Console.WriteLine(porsche.GetPrice());
-    Console.WriteLine(porsche.GetMiles());
+    Car porsche = new Car("2014 Porsche 911", 114991, 7864, "Excellent");
 
-    Car ford = new Car();
-    ford.SetMakeModel("2011 Ford F450");
-    ford.SetPrice(55995);
-    ford.SetMiles(14241);
+    Car ford = new Car("2011 Ford F450", 55995, 14241, "Meh");
 
-    Car lexus = new Car();
-    lexus.SetMakeModel("2013 Lexus RX 350");
-    lexus.SetPrice(44700);
-    lexus.SetMiles(20000);
+    Car lexus = new Car("2013 Lexus RX 350", 44700, 20000, "Radical");
 
-    Car mercedes = new Car();
-    mercedes.SetMakeModel("Mercedes Benz CLS550");
-    mercedes.SetPrice(39900);
-    mercedes.SetMiles(37979);
+    Car mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "The WORST!");
 
     List<Car> Cars = new List<Car>() { porsche, ford, lexus, mercedes };
 
@@ -90,7 +83,7 @@ public class Program
 
     foreach(Car automobile in CarsMatchingSearch)
     {
-      Console.WriteLine(automobile.GetMakeModel());
+      Console.WriteLine(automobile.GetMakeModel() + ", The Fuel Economy is " + automobile.fuelEconomy);
     }
   }
 }
